@@ -40,13 +40,20 @@ function getKoalas() {
     url: '/koalas'
   }).then(function(response) {
     console.log('getKoalas response is',response);
-    renderKoalas(response)
+    renderKoalas(response);
   }).catch(function(error){
     console.log('error in GET', error);
   });
 } // end getKoalas
 
-function addkoala(koalaToAdd) {
+function addKoala(koalaToAdd) {
+  console.log('in addKoala', koalaToAdd);
+  // ajax call to server to get koalas
+  $('#nameIn').val('');
+  $('#ageIn').val('');
+  $('#genderIn').val('');
+  $('#readyForTransferIn').val('');
+  $('#notesIn').val('');
   $.ajax({
     type: 'POST',
     url: '/koalas',
@@ -61,29 +68,19 @@ function addkoala(koalaToAdd) {
 }
 
 function renderKoalas(koalas) {
+  $('#viewKoalas').empty();
   for (let koala of koalas) {
-    $('#viewKoalas').append(`<tr>`)
-    $('#viewKoalas').append(`<td>${koala.name}</td>`)
-    $('#viewKoalas').append(`<td>${koala.age}</td>`)
-    $('#viewKoalas').append(`<td>${koala.gender}</td>`)
+    $('#viewKoalas').append(`<tr>`);
+    $('#viewKoalas').append(`<td>${koala.name}</td>`);
+    $('#viewKoalas').append(`<td>${koala.age}</td>`);
+    $('#viewKoalas').append(`<td>${koala.gender}</td>`);
     if (koala.ready_to_transfer === 'Y'){
-      $('#viewKoalas').append(`<td>Ready</td>`)
+      $('#viewKoalas').append(`<td>Ready</td>`);
     } else {
-      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary toggle" id="${koala.id}">Set as Ready</button></td>`)
+      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary toggle" id="${koala.id}">Set as Ready</button></td>`);
     }
-    $('#viewKoalas').append(`<td>${koala.notes}</td>`)
-    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary delete" id="${koala.id}">Delete</button></td>`)
-    $('#viewKoalas').append(`</tr>`)
+    $('#viewKoalas').append(`<td>${koala.notes}</td>`);
+    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary delete" id="${koala.id}">Delete</button></td>`);
+    $('#viewKoalas').append(`</tr>`);
   }
-}
-
-function saveKoala(newKoala) {
-  console.log('in saveKoala', newKoala);
-  // ajax call to server to get koalas
-  $('#nameIn').val('');
-  $('#ageIn').val('');
-  $('#genderIn').val('');
-  $('#readyForTransferIn').val('');
-  $('#notesIn').val('');
-  
 }

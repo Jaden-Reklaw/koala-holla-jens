@@ -21,10 +21,11 @@ router.post('/', (req,res)=>{
     let newKoala = req.body;
     console.log('Adding New Koala',newKoala);
 
-    let queryText = ' '
-    pool.query(queryText, [])
+    let queryText = `INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
+        VALUES($1, $2, $3, $4, $5);`
+    pool.query(queryText, [newKoala.name, newKoala.gender, newKoala.age, newKoala.readyForTransfer, newKoala.notes])
     .then(result =>{
-        res.sendStatus(500);
+        res.sendStatus(200);
     }).catch(error => {
         console.log(`Error adding Koala`, error);
         res.sendStatus(500);
