@@ -22,7 +22,7 @@ function setupClickListeners() {
     koalaToSend.readyForTransfer = $('#readyForTransferIn').val();
     koalaToSend.notes = $('#notesIn').val();
     // call saveKoala with the new obejct
-    saveKoala(koalaToSend);
+    addKoala(koalaToSend);
   });
   $('#viewKoalas').on('click', '.toggle', function () {
     console.log('toggle on click', this.id);
