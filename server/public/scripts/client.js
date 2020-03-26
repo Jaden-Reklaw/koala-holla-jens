@@ -22,15 +22,60 @@ function setupClickListeners() {
     koalaToSend.readyForTransfer = $('#readyForTransferIn').val();
     koalaToSend.notes = $('#notesIn').val();
     // call saveKoala with the new obejct
-    saveKoala(koalaToSend);
+    addKoala(koalaToSend);
+  });
+  $('#viewKoalas').on('click', '.toggle', function () {
+    console.log('toggle on click', this.id);
+  });
+  $('#viewKoalas').on('click', '.delete', function () {
+    console.log('delete on click', this.id);
   });
 }
 
 function getKoalas() {
   console.log('in getKoalas');
   // ajax call to server to get koalas
-
+  $.ajax({
+    type: 'GET',
+    url: '/koalas'
+  }).then(function(response) {
+    console.log('getKoalas response is',response);
+    renderKoalas(response)
+  }).catch(function(error){
+    console.log('error in GET', error);
+  });
 } // end getKoalas
+
+function addkoala(koalaToAdd) {
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koalaToAdd,
+    }).then(function(response) {
+      console.log('Response from server.', response);
+      getKoalas();
+    }).catch(function(error) {
+      console.log('Error in POST', error)
+      alert('Unable to add koala at this time. Please try again later.');
+    });
+}
+
+function renderKoalas(koalas) {
+  for (let koala of koalas) {
+    $('#viewKoalas').append(`<tr>`)
+    $('#viewKoalas').append(`<td>${koala.name}</td>`)
+    $('#viewKoalas').append(`<td>${koala.age}</td>`)
+    $('#viewKoalas').append(`<td>${koala.gender}</td>`)
+    if (koala.ready_to_transfer === 'Y'){
+      $('#viewKoalas').append(`<td>Ready</td>`)
+    } else {
+      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary toggle" id="${koala.id}">Set as Ready</button></td>`)
+    }
+    $('#viewKoalas').append(`<td>${koala.notes}</td>`)
+    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary delete" id="${koala.id}">Delete</button></td>`)
+    $('#viewKoalas').append(`</tr>`)
+  }
+}
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
@@ -40,5 +85,5 @@ function saveKoala(newKoala) {
   $('#genderIn').val('');
   $('#readyForTransferIn').val('');
   $('#notesIn').val('');
-
+  
 }
