@@ -36,17 +36,14 @@ router.post('/', (req,res)=>{
 // PUT
 router.put('/:id',  (req, res) => {
     let koala = req.body; 
-    let id = req.params.id; // id of the book to update
+    let id = req.params.id;
     let update = req.params.update;
     let queryText = `  `;
     pool.query(queryText,[id])
     .then(()=>{
       console.log('Updating koala ${id} with ', koala);
       res.sendStatus(200);
-    })
-  
-    // TODO - REPLACE BELOW WITH YOUR CODE
-    .catch((error)=>{
+    }).catch((error)=>{
       console.log('Error in UPDATE',error);
       res.sendStatus(500);
     })
@@ -61,11 +58,7 @@ router.delete('/:id',  (req, res) => {
     .then(()=>{
       res.sendStatus(200);
       console.log('Delete Koala', id);
-    })
-    // TODO - REPLACE BELOW WITH YOUR CODE
-
-    
-    .catch((error)=>{
+    }).catch((error)=>{
       res.sendStatus(500);
       console.log('Error on Delete Koala', error);
     })

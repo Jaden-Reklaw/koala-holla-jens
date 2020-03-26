@@ -25,6 +25,6 @@
     float: left;
 }
 
-#addKoala{
+.koalaSection{
     background-color: rgba(249, 213, 255, 0.76);
 }
