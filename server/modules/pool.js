@@ -1,7 +1,7 @@
 const pg = require('pg');
 
 const config = {
-  database: 'koala_database', 
+  database: 'koala_datebase', 
   host: 'localhost', 
   port: 5432, 
   max: 10, 
