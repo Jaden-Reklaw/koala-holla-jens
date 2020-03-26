@@ -70,4 +70,4 @@ router.delete('/:id',  (req, res) => {
     })
 });
 
-module.exports = koalaRouter;
+module.exports = router;
