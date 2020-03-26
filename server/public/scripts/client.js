@@ -29,7 +29,14 @@ function setupClickListeners() {
 function getKoalas() {
   console.log('in getKoalas');
   // ajax call to server to get koalas
-
+  $.ajax({
+    type: 'GET',
+    url: '/koalas'
+  }).then(function(response) {
+    console.log('getKoalas response is',response);
+  }).catch(function(error){
+    console.log('error in GET', error);
+  });
 } // end getKoalas
 
 function saveKoala(newKoala) {
@@ -40,5 +47,5 @@ function saveKoala(newKoala) {
   $('#genderIn').val('');
   $('#readyForTransferIn').val('');
   $('#notesIn').val('');
-
+  
 }
