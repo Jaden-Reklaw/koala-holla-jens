@@ -75,6 +75,7 @@ function updateStatus(koalaId) {
   }).then(function(response) {
     console.log('Got a response from server after item deleted', response);
     getKoalas();
+    
   }).catch(function(error) {
     console.log('Got an error', error);
   });
