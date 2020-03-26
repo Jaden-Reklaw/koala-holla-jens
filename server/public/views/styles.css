@@ -17,7 +17,7 @@
    padding: 5%;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    font-style: oblique;
-   background-color: rgb(82, 82, 241);
+   background-color: lightblue;
 }
 
 .icon{
@@ -26,5 +26,9 @@
 }
 
 .koalaSection{
-    background-color: rgba(249, 213, 255, 0.76);
+    background-color: #f9edde;
+}
+
+body {
+    background-color: whitesmoke;
 }
