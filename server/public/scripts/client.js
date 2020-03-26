@@ -47,9 +47,9 @@ function renderKoalas(koalas) {
     $('#viewKoalas').append(`<td>${koala.age}</td>`)
     $('#viewKoalas').append(`<td>${koala.gender}</td>`)
     if (koala.ready_to_transfer === 'Y'){
-      $('#viewKoalas').append(`<td></td>`)
+      $('#viewKoalas').append(`<td>Ready</td>`)
     } else {
-      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Ready to Transfer</button></td>`)
+      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Set as Ready</button></td>`)
     }
     $('#viewKoalas').append(`<td>${koala.notes}</td>`)
     $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Delete</button></td>`)
