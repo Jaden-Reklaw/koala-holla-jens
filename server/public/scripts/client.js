@@ -24,6 +24,12 @@ function setupClickListeners() {
     // call saveKoala with the new obejct
     saveKoala(koalaToSend);
   });
+  $('#viewKoalas').on('click', '.toggle', function () {
+    console.log('toggle on click', this.id);
+  });
+  $('#viewKoalas').on('click', '.delete', function () {
+    console.log('delete on click', this.id);
+  });
 }
 
 function getKoalas() {
@@ -63,10 +69,10 @@ function renderKoalas(koalas) {
     if (koala.ready_to_transfer === 'Y'){
       $('#viewKoalas').append(`<td>Ready</td>`)
     } else {
-      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Set as Ready</button></td>`)
+      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary toggle" id="${koala.id}">Set as Ready</button></td>`)
     }
     $('#viewKoalas').append(`<td>${koala.notes}</td>`)
-    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Delete</button></td>`)
+    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary delete" id="${koala.id}">Delete</button></td>`)
     $('#viewKoalas').append(`</tr>`)
   }
 }
