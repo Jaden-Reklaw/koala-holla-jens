@@ -70,11 +70,11 @@ function updateStatus(koalaId) {
   
   $.ajax({
     method: "PUT",
-    url: `/books/${koalaId}`,
+    url: `/koalas/${koalaId}`,
     data: {status: 'Y'}
   }).then(function(response) {
     console.log('Got a response from server after item deleted', response);
-    refreshBooks();
+    getKoalas();
   }).catch(function(error) {
     console.log('Got an error', error);
   });
