@@ -34,7 +34,6 @@ function getKoalas() {
     url: '/koalas'
   }).then(function(response) {
     console.log('getKoalas response is',response);
-    renderBooks(response);
   }).catch(function(error){
     console.log('error in GET', error);
   });
@@ -48,5 +47,5 @@ function saveKoala(newKoala) {
   $('#genderIn').val('');
   $('#readyForTransferIn').val('');
   $('#notesIn').val('');
-
+  
 }
