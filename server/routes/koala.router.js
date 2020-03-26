@@ -53,11 +53,11 @@ router.put('/:id',  (req, res) => {
 // DELETE
 router.delete('/:id',  (req, res) => {
     let id = req.params.id; 
-    let queryText = 
+    let queryText = `DELETE FROM "koalas" WHERE "id" = $1;`
     pool.query(queryText, [req.params.id])
-    .then(()=>{
-      res.sendStatus(200);
+    .then(() => {
       console.log('Delete Koala', id);
+      res.sendStatus(200);
     }).catch((error)=>{
       res.sendStatus(500);
       console.log('Error on Delete Koala', error);
