@@ -37,11 +37,11 @@ router.post('/', (req,res)=>{
 router.put('/:id',  (req, res) => {
     let koala = req.body; 
     let id = req.params.id;
-    let update = req.params.update;
-    let queryText = `  `;
-    pool.query(queryText,[id])
+    let queryText = `UPDATE koalas SET ready_to_transfer = $1
+                    WHERE id = $2`;
+    pool.query(queryText, [koala.status, id])
     .then(()=>{
-      console.log('Updating koala ${id} with ', koala);
+      console.log(`Updating koala ${id} with `, koala);
       res.sendStatus(200);
     }).catch((error)=>{
       console.log('Error in UPDATE',error);
