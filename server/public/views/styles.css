@@ -1,0 +1,16 @@
+.container{
+    line-break: auto;
+    padding: 5px;
+    
+}
+
+#header{
+   padding: 5%;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   font-style: oblique;
+}
+
+.icon{
+    height: 180px;
+    float: left;
+}
