@@ -34,10 +34,28 @@ function getKoalas() {
     url: '/koalas'
   }).then(function(response) {
     console.log('getKoalas response is',response);
+    renderKoalas(response)
   }).catch(function(error){
     console.log('error in GET', error);
   });
 } // end getKoalas
+
+function renderKoalas(koalas) {
+  for (let koala of koalas) {
+    $('#viewKoalas').append(`<tr>`)
+    $('#viewKoalas').append(`<td>${koala.name}</td>`)
+    $('#viewKoalas').append(`<td>${koala.age}</td>`)
+    $('#viewKoalas').append(`<td>${koala.gender}</td>`)
+    if (koala.ready_to_transfer === 'Y'){
+      $('#viewKoalas').append(`<td></td>`)
+    } else {
+      $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Ready to Transfer</button></td>`)
+    }
+    $('#viewKoalas').append(`<td>${koala.notes}</td>`)
+    $('#viewKoalas').append(`<td><button type="button" class="btn btn-outline-secondary" id="${koala.id}">Delete</button></td>`)
+    $('#viewKoalas').append(`</tr>`)
+  }
+}
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
