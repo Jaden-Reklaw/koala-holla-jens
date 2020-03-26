@@ -40,6 +40,20 @@ function getKoalas() {
   });
 } // end getKoalas
 
+function addkoala(koalaToAdd) {
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koalaToAdd,
+    }).then(function(response) {
+      console.log('Response from server.', response);
+      getKoalas();
+    }).catch(function(error) {
+      console.log('Error in POST', error)
+      alert('Unable to add koala at this time. Please try again later.');
+    });
+}
+
 function renderKoalas(koalas) {
   for (let koala of koalas) {
     $('#viewKoalas').append(`<tr>`)
