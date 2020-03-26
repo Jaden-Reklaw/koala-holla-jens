@@ -1,7 +1,4 @@
 
-* {
-    background-color: rgba(249, 213, 255, 0.76);
-}
 
 * {
     color: rgb(0, 0, 0);
@@ -26,4 +23,8 @@
 .icon{
     height: 180px;
     float: left;
+}
+
+#addKoala{
+    background-color: rgba(249, 213, 255, 0.76);
 }
