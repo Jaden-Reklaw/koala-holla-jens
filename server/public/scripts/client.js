@@ -16,6 +16,7 @@ function setupClickListeners() {
   });
   $('#viewKoalas').on('click', '.toggle', function () {
     console.log('toggle on click', this.id);
+    updateStatus(this.id);
   });
   $('#viewKoalas').on('click', '.delete', function () {
     console.log('delete on click', this.id);
@@ -61,6 +62,22 @@ function addKoala() {
       console.log('Error in POST', error)
       alert('Unable to add koala at this time. Please try again later.');
     });
+}
+
+// Update status when you click on a book 
+function updateStatus(koalaId) {
+  console.log('updateStatus');
+  
+  $.ajax({
+    method: "PUT",
+    url: `/books/${koalaId}`,
+    data: {status: 'Y'}
+  }).then(function(response) {
+    console.log('Got a response from server after item deleted', response);
+    refreshBooks();
+  }).catch(function(error) {
+    console.log('Got an error', error);
+  });
 }
 
 function renderKoalas(koalas) {
