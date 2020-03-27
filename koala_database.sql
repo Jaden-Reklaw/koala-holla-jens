@@ -1,21 +1,17 @@
-CREATE TABLE koalas(
+CREATE TABLE todolist(
 	id SERIAL PRIMARY KEY,
-	name VARCHAR (120) NOT NULL,
-	gender VARCHAR (1) NOT NULL,
-	age INTEGER NOT NULL,
-	ready_to_transfer VARCHAR(1),
-  	notes VARCHAR (200) DEFAULT 'Want to Read'
+	task VARCHAR (120) NOT NULL,
+	status VARCHAR (120) NOT NULL,
 );
 
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Scotty', 'M', 4, 'Y', 'Born in Guatemala');
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Jean', 'F', 5, 'Y', 'Allergic to lots of lava');
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Ororo', 'F', 7, 'N', 'Loves listening to Paula (Abdul)');
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Logan', 'M', 15, 'N', 'Loves the sauna');
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Charlie', 'M', 9, 'Y', 'Favorite band is Nirvana');
-INSERT INTO koalas (name, gender, age, ready_to_transfer, notes)
-VALUES('Betsy', 'F', 4, 'Y', 'Has a pet iguana');
+INSERT INTO todolist (task, status)
+VALUES('work on coding for a hr','not complete');
+INSERT INTO todolist (task, status)
+VALUES('cook dinner','not complete');
+INSERT INTO todolist (task, status)
+VALUES('eat dinner','not complete');
+INSERT INTO todolist (task, status)
+VALUES('clean my room','not complete');
+INSERT INTO todolist (task, status)
+VALUES('go to sleep','not complete');
+ 
