@@ -132,7 +132,7 @@ function editKoala(){
   $.ajax({
     type: 'POST',
     url: '/koalas',
-    data: ,
+    data: koalaToEdit,
     }).then(function(response) {
       console.log('Response from server.', response);
       getKoalas();
@@ -143,3 +143,5 @@ function editKoala(){
 
 
 }
+
+
