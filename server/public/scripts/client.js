@@ -21,6 +21,12 @@ function setupClickListeners() {
   $('#viewKoalas').on('click', '.delete', function () {
     console.log('delete on click', this.id);
   });
+  $('#btn-search').on('click', function () {
+    let search = $('#in-search').val();
+    $('#in-search').val('');
+    console.log('search on click', search);
+    searchFor(search);
+  });
 }
 
 function getKoalas() {
@@ -64,6 +70,26 @@ function addKoala() {
     });
 }
 
+function searchFor(search) {
+  console.log('updateStatus');
+  console.log('search:', search);
+
+  data = { searchFor: search}
+  console.log(data)
+
+  $.ajax({
+    method: "POST",
+    url: `/koalas/search`,
+    data
+  }).then(function (response) {
+    console.log('Got a response from server', response);
+    renderKoalas(response);
+
+  }).catch(function (error) {
+    console.log('Got an error', error);
+  });
+}
+
 function handleDelete() {
   console.log('clicked delete');
 
@@ -95,7 +121,7 @@ function updateStatus(koalaId) {
   }).then(function(response) {
     console.log('Got a response from server after item deleted', response);
     getKoalas();
-    
+
   }).catch(function(error) {
     console.log('Got an error', error);
   });

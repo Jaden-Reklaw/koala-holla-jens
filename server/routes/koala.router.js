@@ -32,6 +32,20 @@ router.post('/', (req,res)=>{
       });
 })
 
+router.post('/search', (req, res) => {
+    let searchFor = req.body;
+    console.log('Searching for koala', searchFor);
+
+    let queryText = `SELECT * FROM "koalas" WHERE "name" LIKE $1 ORDER BY "name";`
+    pool.query(queryText, [`%${searchFor.searchFor}%`])
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log(`Error adding Koala`, error);
+            res.sendStatus(500);
+        });
+})
+
 
 // PUT
 router.put('/:id',  (req, res) => {
