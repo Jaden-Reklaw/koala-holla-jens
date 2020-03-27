@@ -64,6 +64,26 @@ function addKoala() {
     });
 }
 
+function handleDelete() {
+  console.log('clicked delete');
+
+  let Id = $(this).parent().parent().data('Id');
+  console.log(' id: ', Id);
+
+  $.ajax({
+      method: 'DELETE',
+      url: `/koalas${Id}`,
+    })
+    .then(function (response) {
+      console.log('Response from server.', response);;
+    })
+    .catch(function (error) {
+      console.log('Error in DELETE', error)
+      alert('error in delete');
+    });
+
+}
+
 // Update status when you click on a book 
 function updateStatus(koalaId) {
   console.log('updateStatus');
