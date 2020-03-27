@@ -6,18 +6,19 @@
     <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="vendors/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="views/styles.css">
     <link rel="stylesheet" href="vendors/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="views/styles.css">
   </head>
   <body>
     <div class="container">
-      <header>
-        <img src="images/icon.png" class="icon" />
+      <header id="header">
+        <img src="images/icon.png" class="icon"/>
         <h1>Koala Holla</h1>
         <h3>1976 Llama Comma Drive</h2>
         <h3>Walla Walla, WA</h2>
       </header>
-      <section id="addKoala">
+      
+      <section id="addKoala" class="koalaSection">
         <h2>Add Koala</h2>
         <div class="input-group">
           <div class="input-group-prepend">
@@ -31,19 +32,20 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Gender</span>
           </div>
-          <input type="text" id="genderIn" class="form-control" value="" placeholder="Gender">
+          <input type="text" id="genderIn" class="form-control" value="" placeholder="M/F">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Transfer</span>
           </div>
-          <input type="text" id="readyForTransferIn" class="form-control" value="" placeholder="Transfer">
+          <input type="text" id="readyForTransferIn" class="form-control" value="" placeholder="Y/N">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Notes</span>
           </div>
           <input type="text" id="notesIn" value="" class="form-control" placeholder="Notes">
-          <button type="button" class="btn btn-outline-secondary" id="addButton">Add Koala</button>
+          <button type="button" class="btn btn-outline-secondary addKoala" id="addButton">Add Koala</button>
         </div>
       </section>
-      <section>
+
+      <section class= "koalaSection">
         <h2>All Koalas</h2>
         <table class="table table-striped">
           <thead>
@@ -53,6 +55,7 @@
               <th>Gender</th>
               <th>Ready for Transfer</th>
               <th>Notes</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="viewKoalas">
