@@ -46,7 +46,16 @@
       </section>
 
       <section class= "koalaSection">
-        <h2>All Koalas</h2>
+        <div class="row">
+          <h2 class="col-sm-4">All Koalas</h2>
+          <div class="col-md-4"></div>
+          <div class="input-group col-sm-4 mb-3">
+            <input type="text" class="form-control" placeholder="Search" id="in-search" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary addKoala" type="button" id="btn-search">Search</button>
+            </div>
+          </div>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
