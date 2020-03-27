@@ -70,26 +70,6 @@ function addKoala() {
     });
 }
 
-function searchFor(search) {
-  console.log('updateStatus');
-  console.log('search:', search);
-
-  data = { searchFor: search}
-  console.log(data)
-
-  $.ajax({
-    method: "POST",
-    url: `/koalas/search`,
-    data
-  }).then(function (response) {
-    console.log('Got a response from server', response);
-    renderKoalas(response);
-
-  }).catch(function (error) {
-    console.log('Got an error', error);
-  });
-}
-
 function handleDelete() {
   console.log('clicked delete');
 
@@ -121,7 +101,7 @@ function updateStatus(koalaId) {
   }).then(function(response) {
     console.log('Got a response from server after item deleted', response);
     getKoalas();
-
+    
   }).catch(function(error) {
     console.log('Got an error', error);
   });
@@ -144,3 +124,24 @@ function renderKoalas(koalas) {
     $('#viewKoalas').append(`</tr>`);
   }
 }
+
+function editKoala(){
+  let Id = $(this).parent().parent().data('Id');
+  let edit_Id = $(this).data('Id');
+
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koalaToEdit,
+    }).then(function(response) {
+      console.log('Response from server.', response);
+      getKoalas();
+    }).catch(function(error) {
+      console.log('Error in POST', error)
+      alert('Unable toedit koala at this time. Please try again later.');
+    });
+
+
+}
+
+
